@@ -1,3 +1,10 @@
+import { UserButton } from "@clerk/nextjs";
+
 export default function Home() {
-  return <p>Only authenticated users</p>;
+  return (
+    <div className="text-6xl text-amber-200">
+      <UserButton />
+      <p>Dashboard</p>
+    </div>
+  );
 }

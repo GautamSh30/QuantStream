@@ -1,14 +1,20 @@
+// pages/[[...rest]].tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Logo } from "./(auth)/_components/logo";
 import {
   ClerkProvider,
   SignInButton,
   SignedIn,
   SignedOut,
   UserButton,
+  SignIn,
+  SignUp,
 } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
+import { dark } from "@clerk/themes";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,16 +27,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
         <body>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SignedOut>
+              <div className="h-full flex flex-col items-center justify-center space-y-6">
+                <Logo />
+                <SignIn routing="hash" />
+              </div>
+            </SignedOut>
+            <SignedIn>{children}</SignedIn>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
