@@ -9,5 +9,6 @@ export const config = {
     "/((?!.*\\..*|_next|[[...rest]]).*)", // Exclude the catch-all route
     "/",
     "/(api|trpc)(.*)",
+    "/api/uploadthing",
   ],
 };
