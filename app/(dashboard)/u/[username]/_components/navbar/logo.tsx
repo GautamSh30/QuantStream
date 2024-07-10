@@ -16,7 +16,7 @@ export const Logo = () => {
           <Image src="/squarylines.svg" alt="LiveHub" width="32" height="32" />
         </div>
         <div className={cn("hidden lg:block", font.className)}>
-          <p className="text-lg font-semibold">StreamHub</p>
+          <p className="text-lg font-semibold">QuantStream</p>
           <p className="text-xs text-muted-foreground">Creator dashboard</p>
         </div>
       </div>

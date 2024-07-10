@@ -16,13 +16,13 @@ export const Logo = () => {
         <div className="bg-white rounded-full p-1 mr-12 shrink-0 lg:mr-0 lg:shrink">
           <Image
             src="/squarylines.svg"
-            alt="StreamHub"
+            alt="QuantStream"
             height="32"
             width="32"
           />
         </div>
         <div className={cn("hidden log:block", font.className)}>
-          <p className="text-lg font-semibold">StreamHub</p>
+          <p className="text-lg font-semibold">QuantStream</p>
           <p className="text-xs text-muted-foreground">Let&apos;s play</p>
         </div>
       </div>
