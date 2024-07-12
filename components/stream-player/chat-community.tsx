@@ -1,6 +1,6 @@
 import { useParticipants } from "@livekit/components-react";
 import { useMemo, useState } from "react";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CommunityItem } from "./community-item";
@@ -18,7 +18,7 @@ export const ChatCommunity = ({
   isHidden,
 }: ChatCommunityProps) => {
   const [value, setValue] = useState("");
-  const debouncedValue = useDebounce<string>(value, 500);
+  const debouncedValue = useDebounceValue<string>(value, 500);
   const participants = useParticipants();
   const onChange = (newValue: string) => {
     setValue(newValue);
@@ -36,7 +36,7 @@ export const ChatCommunity = ({
     return deduped.filter((participant) => {
       return participant.name
         ?.toLowerCase()
-        .includes(debouncedValue.toLowerCase());
+        .includes(debouncedValue[0].toLowerCase());
     });
   }, [participants, debouncedValue]);
 

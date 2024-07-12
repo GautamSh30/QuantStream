@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,16 +11,16 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  username String @unique
-  imageUrl String @db.Text
-  externalUserId String @unique
-  bio String? @db.Text
+  id             String  @id @default(uuid())
+  username       String  @unique
+  imageUrl       String  @db.Text
+  externalUserId String  @unique
+  bio            String? @db.Text
 
-  following Follow[] @relation("Following")
+  following  Follow[] @relation("Following")
   followedBy Follow[] @relation("FollowedBy")
 
-  blocking Block[] @relation("Blocking")
+  blocking  Block[] @relation("Blocking")
   blockedBy Block[] @relation("BlockedBy")
 
   stream    Stream?
@@ -40,7 +43,7 @@ model Follow {
 }
 
 model Block {
-  id String @id @default(uuid())
+  id        String @id @default(uuid())
   blockerId String
   blockedId String
 
@@ -65,13 +68,13 @@ model Stream {
   isChatEnabled       Boolean @default(true)
   isChatDelayed       Boolean @default(false)
   isChatFollowersOnly Boolean @default(false)
-  
+
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   @@index([userId])
   @@index([ingressId])
 }

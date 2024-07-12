@@ -1,14 +1,14 @@
 "use client";
 import { useSidebar } from "@/store/use-sidebar";
 import { User } from "@prisma/client";
-import { UserItem, UserItemSkeleton } from "./user-item";
+import UserItem, { UserItemSkeleton } from "./user-item";
 
 interface RecommendedProps {
   data: (User & {
     stream: { isLive: boolean } | null;
   })[];
 }
-export const Recommended = ({ data }: RecommendedProps) => {
+const Recommended = ({ data }: RecommendedProps) => {
   const { collapsed } = useSidebar((state) => state);
 
   const showLabel = !collapsed && data.length > 0;
@@ -32,6 +32,8 @@ export const Recommended = ({ data }: RecommendedProps) => {
     </div>
   );
 };
+
+export default Recommended;
 
 export const RecommendedSkeleton = () => {
   return (

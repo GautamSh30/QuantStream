@@ -12,7 +12,7 @@ interface UserItemProps {
   imageUrl: string;
   isLive?: boolean;
 }
-export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
+const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
   const pathname = usePathname();
 
   const { collapsed } = useSidebar((state) => state);
@@ -44,6 +44,8 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
     </Button>
   );
 };
+
+export default UserItem;
 
 export const UserItemSkeleton = () => {
   return (

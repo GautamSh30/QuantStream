@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
-        <body suppressHydrationWarning={true}>
+        <body>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
